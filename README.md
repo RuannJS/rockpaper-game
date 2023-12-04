@@ -1,27 +1,16 @@
-# RockPaperMaster
+# Rock, Paper, Scissors, Lizard, Spock Game
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+## Overview
 
-## Development server
+This project is a web-based Rock, Paper, Scissors, Lizard, Spock game where users can play against the computer. The game offers a unique twist inspired by The Big Bang Theory, incorporating Lizard and Spock into the classic mix.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Features
 
-## Code scaffolding
+- **Play Against the Computer:** Challenge the computer with your best moves.
+- **Responsive Design:** Enjoy an optimal gaming experience on devices of all sizes.
+- **Interactive Elements:** Hover and focus states for enhanced user interaction.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Bonuses
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- **Score Persistence:** Your score will persist even after refreshing the browser, ensuring you never lose track.
+- **Big Bang Theory Fun:** As a nod to The Big Bang Theory, there's a special reference woven into the game. Can you spot it?

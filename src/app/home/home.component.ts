@@ -1,5 +1,5 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   Lizard,
   Paper,
@@ -19,11 +19,21 @@ import { GameResult } from '../entities/game-status.enum';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   constructor(private readonly gameService: GameService) {}
 
   // SCORE
-  currentScore = this.gameService.currentScore;
+  currentScore!: string;
+
+  ngOnInit(): void {
+    const score = window.sessionStorage.getItem('score');
+
+    if (score !== null) {
+      this.currentScore = score;
+    } else {
+      this.currentScore = '0';
+    }
+  }
 
   // GAME PHASES
 
@@ -97,7 +107,12 @@ export class HomeComponent {
     this.isConfirmPhase = false;
     this.isPickPhase = false;
     this.gameResult = this.gameService.gameStatusMessage();
-    this.currentScore = this.gameService.currentScore;
+
+    if (this.gameResult.message === 'you win') {
+      const score = (Number(this.currentScore) + 1).toString();
+      this.currentScore = score;
+      window.sessionStorage.setItem('score', score);
+    }
   }
 
   resetGamePhase() {

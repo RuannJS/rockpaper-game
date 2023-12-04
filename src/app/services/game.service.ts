@@ -54,7 +54,6 @@ export class GameService {
     this.lizard,
   ];
 
-  currentScore: number = 0;
   userStance!: Stance;
   houseStance!: Stance;
   gameStatus!: GameStatus;
@@ -99,12 +98,10 @@ export class GameService {
 
     if (this.gameStatus === GameStatus.WIN) {
       gameResult = { message: 'you win', button: 'play again' };
-      this.currentScore++;
     } else if (this.gameStatus === GameStatus.DRAW) {
       gameResult = { message: 'draw', button: 'try again' };
     } else {
       gameResult = { message: 'you lost', button: 'try again' };
-      this.currentScore = 0;
     }
 
     return gameResult;
