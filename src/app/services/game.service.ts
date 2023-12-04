@@ -8,13 +8,13 @@ import {
   Rock,
   Lizard,
 } from '../entities/stance.class';
+import { GameResult, GameStatus } from '../entities/game-status.enum';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GameService {
-  constructor() {}
-
+  // DATA
   scissorsUrl = '../../assets/icon-scissors.svg';
   paperUrl = '../../assets/icon-paper.svg';
   rockUrl = '../../assets/icon-rock.svg';
@@ -22,15 +22,15 @@ export class GameService {
   lizardUrl = '../../assets/icon-lizard.svg';
 
   spockHtmlClass =
-    'p-3 bg-white border-8 border-cyan-300 stance-image shadow-black shadow-xl shadow-inner ';
+    ' p-4 bg-white border-8 border-cyan-300 stance-image shadow-black shadow-xl shadow-inner ';
   lizardHtmlClass =
-    'p-2 bg-white border-8 border-purple-500 stance-image  shadow-black shadow-xl shadow-inner ';
+    ' p-4 bg-white border-8 border-purple-500 stance-image  shadow-black shadow-xl shadow-inner ';
   rockHtmlClass =
-    'left-60 p-2 bg-white border-8 border-red-500 stance-image  shadow-black shadow-xl shadow-inner  ';
+    'p-4 bg-white border-8 border-red-500 stance-image  shadow-black shadow-xl shadow-inner  ';
   paperHtmlClass =
-    'p-2 bg-white border-8 border-indigo-500 stance-image  shadow-black shadow-xl  shadow-inner ';
+    'p-4 bg-white border-8 border-indigo-500 stance-image  shadow-black shadow-xl  shadow-inner ';
   scissorsHtmlClass =
-    'bg-white border-8 border-yellow-500 stance-image  shadow-black shadow-xl  shadow-inner';
+    'p-4 bg-white border-8 border-yellow-500 stance-image  shadow-black shadow-xl  shadow-inner';
 
   scissors: Scissors = new Scissors(
     Stances.SCISSORS,
@@ -53,15 +53,60 @@ export class GameService {
     this.spock,
     this.lizard,
   ];
-  randomStance: number = Math.ceil(Math.random() * 4);
-  userStance!: Stance;
-  houseStance: Stance = this.stanceArray[this.randomStance];
 
-  onUserPick(stance: Stance) {
-    this.userStance = stance;
+  currentScore: number = 0;
+  userStance!: Stance;
+  houseStance!: Stance;
+  gameStatus!: GameStatus;
+
+  // METHODS
+  // Returns a random index between 0 and 4
+  randomStance(): number {
+    return Math.ceil(Math.random() * 4);
   }
 
-  confirmPick() {}
+  // When user clicks a Stance
+  onUserPick(stance: Stance): void {
+    this.userStance = stance;
 
-  compareStances(stance: Stance) {}
+    // Generates a random House Stance
+    const generateHouseStance = () => {
+      this.houseStance = this.stanceArray[this.randomStance()];
+    };
+
+    generateHouseStance();
+  }
+
+  // Compares User vs. House
+  compareStances(): void {
+    const result = this.userStance.compareStances(this.houseStance.name);
+
+    switch (result) {
+      case 1:
+        this.gameStatus = GameStatus.WIN;
+        break;
+      case 0:
+        this.gameStatus = GameStatus.DRAW;
+        break;
+      case -1:
+        this.gameStatus = GameStatus.LOSE;
+        break;
+    }
+  }
+
+  gameStatusMessage(): GameResult {
+    var gameResult!: GameResult;
+
+    if (this.gameStatus === GameStatus.WIN) {
+      gameResult = { message: 'you win', button: 'play again' };
+      this.currentScore++;
+    } else if (this.gameStatus === GameStatus.DRAW) {
+      gameResult = { message: 'draw', button: 'try again' };
+    } else {
+      gameResult = { message: 'you lost', button: 'try again' };
+      this.currentScore = 0;
+    }
+
+    return gameResult;
+  }
 }
