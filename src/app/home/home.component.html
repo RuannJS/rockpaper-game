@@ -1,4 +1,25 @@
 <article>
+  <!-- RULES -->
+
+  <div
+    *ngIf="showRules"
+    class="bg-white absolute top-0 left-0 right-0 bottom-0 text-slate-700 z-10 overflow-hidden"
+  >
+    <div class="flex flex-col gap-28 p-5">
+      <span class="text-6xl font-black flex justify-center mt-14">RULES</span>
+      <img src="../../assets/image-rules-bonus.svg" alt="rules" />
+      <div class="flex justify-center">
+        <img
+          (click)="toggleRules()"
+          class="flex justify-center"
+          width="50"
+          src="../../assets/icon-close.svg"
+          alt="close"
+        />
+      </div>
+    </div>
+  </div>
+
   <div class="flex flex-col p-10">
     <div
       class="flex justify-between border-2 border-slate-200 rounded-lg p-5 w-full"
@@ -120,7 +141,7 @@
           </span>
           <button
             (click)="resetGamePhase()"
-            class="bg-white text-sky-900 font-bold text-2xl shadow-black shadow-lg rounded-lg px-5 py-2"
+            class="bg-white text-sky-900 font-bold text-2xl shadow-black shadow-lg rounded-lg px-5 py-2 hover:underline"
           >
             {{ gameResult.button.toUpperCase() }}
           </button>
@@ -139,7 +160,7 @@
       >
       <button
         (click)="onUserConfirm()"
-        class="border-2 border-slate-500 rounded-lg px-10 py-2 text-xl font-bold text-slate-600"
+        class="border-2 border-slate-500 rounded-lg px-10 py-2 text-xl font-bold text-slate-600 hover:underline hover:bg-sky-100"
         type="button"
       >
         CONFIRM
@@ -147,9 +168,10 @@
     </div>
   </div>
 
-  <div class="flex justify-center mt-32 pb-20">
+  <div class="flex justify-center mt-32 pb-14">
     <button
-      class="border-2 border-slate-500 rounded-lg px-10 py-2 text-xl font-bold text-slate-600"
+      (click)="toggleRules()"
+      class="border-2 border-slate-500 rounded-lg px-10 py-2 text-xl font-bold text-slate-600 hover:underline hover:bg-sky-100"
       type="button"
     >
       RULES
