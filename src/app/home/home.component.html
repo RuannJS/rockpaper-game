@@ -1,17 +1,19 @@
-<article>
+<article class="lg:px-52 xl:px-72 2xl:px-96">
   <!-- RULES -->
 
   <div
     *ngIf="showRules"
-    class="bg-white absolute top-0 left-0 right-0 bottom-0 text-slate-700 z-10 overflow-hidden"
+    class="bg-white absolute top-0 left-0 right-0 text-slate-700 z-10 pb-32"
   >
     <div class="flex flex-col gap-28 p-5">
       <span class="text-6xl font-black flex justify-center mt-14">RULES</span>
-      <img src="../../assets/image-rules-bonus.svg" alt="rules" />
+      <div class="flex justify-center">
+        <img src="../../assets/image-rules-bonus.svg" width="500" alt="rules" />
+      </div>
       <div class="flex justify-center">
         <img
           (click)="toggleRules()"
-          class="flex justify-center"
+          class="flex justify-center cursor-pointer"
           width="50"
           src="../../assets/icon-close.svg"
           alt="close"
@@ -22,7 +24,7 @@
 
   <div class="flex flex-col p-10">
     <div
-      class="flex justify-between border-2 border-slate-200 rounded-lg p-5 w-full"
+      class="flex justify-between border-2 border-slate-200 rounded-lg p-5 w-full lg:justify-around"
     >
       <img
         priority
@@ -44,7 +46,7 @@
     <div *ngIf="isPickPhase" class="flex justify-center mt-10 relative">
       <!-- PENTAGON -->
       <img
-        class="mt-16"
+        class="mt-16 opacity-40"
         ngSrc="../../assets/bg-pentagon.svg"
         width="400"
         height="400"
@@ -56,7 +58,7 @@
       <img
         (click)="onUserPick(spock)"
         [ngClass]="spock.htmlClass"
-        class="absolute -left-6 top-40"
+        class="absolute -left-6 top-40 hover:p-2 hover:opacity-60 cursor-pointer sm:left-10 md:left-24 lg:left-5 xl:left-16 2xl:left-72"
         [ngSrc]="spock.image"
         width="75"
         height="75"
@@ -68,7 +70,7 @@
       <img
         (click)="onUserPick(lizard)"
         [ngClass]="lizard.htmlClass"
-        class="absolute -bottom-5 left-7"
+        class="absolute -bottom-5 left-7 hover:p-2 hover:opacity-60 cursor-pointer sm:left-24 md:left-36 lg:left-24 xl:left-36 2xl:left-96"
         [ngSrc]="lizard.image"
         width="75"
         height="75"
@@ -79,7 +81,7 @@
       <img
         (click)="onUserPick(rock)"
         [ngClass]="rock.htmlClass"
-        class="absolute -bottom-5 left-60"
+        class="absolute -bottom-5 right-4 hover:p-2 hover:opacity-60 cursor-pointer sm:right-24 md:right-40 lg:right-24 xl:right-40 2xl:right-96"
         [ngSrc]="rock.image"
         width="75"
         height="75"
@@ -90,7 +92,7 @@
       <img
         (click)="onUserPick(paper)"
         [ngClass]="paper.htmlClass"
-        class="absolute top-40 -right-6"
+        class="absolute top-40 -right-6 hover:p-0 hover:opacity-60 cursor-pointer sm:right-10 md:right-24 lg:right-10 xl:right-20 2xl:right-72"
         [ngSrc]="paper.image"
         width="75"
         height="75"
@@ -101,7 +103,7 @@
       <img
         (click)="onUserPick(scissors)"
         [ngClass]="scissors.htmlClass"
-        class="absolute top-8"
+        class="absolute top-8 hover:p-2 hover:opacity-60 cursor-pointer"
         [ngSrc]="scissors.image"
         width="75"
         height="75"

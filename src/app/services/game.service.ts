@@ -28,7 +28,7 @@ export class GameService {
   rockHtmlClass =
     'p-4 bg-white border-8 border-red-500 stance-image  shadow-black shadow-xl shadow-inner  ';
   paperHtmlClass =
-    'p-4 bg-white border-8 border-indigo-500 stance-image  shadow-black shadow-xl  shadow-inner ';
+    'p-2 bg-white border-8 border-indigo-500 stance-image  shadow-black shadow-xl  shadow-inner ';
   scissorsHtmlClass =
     'p-4 bg-white border-8 border-yellow-500 stance-image  shadow-black shadow-xl  shadow-inner';
 
